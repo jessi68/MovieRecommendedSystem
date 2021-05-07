@@ -1,0 +1,8 @@
+--database 설정하는데 필요한 command
+
+docker start container_name
+docker exec -i -t container_name bash
+su - postgres
+(if "psql: error: FATAL role "postgres" does not exist"
+occurs, then type "psql --username souyoon --dbname springdata")
+psql spring data
