@@ -6,3 +6,12 @@ su - postgres
 (if "psql: error: FATAL role "postgres" does not exist"
 occurs, then type "psql --username souyoon --dbname springdata")
 psql spring data
+
+
+sql 문에서 ? 에 무슨 값이 들어가있는지 알려면
+logging.level.org.hibernate.type.descriptor.sql=trace
+를 application.properties 에 추가하면 된다.
+
+
+docker start postgres_boot && docker exec -i -t postgres_boot bash
+psql --username souyoon --dbname springdata

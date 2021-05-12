@@ -3,7 +3,10 @@ package com.example.demo;
 
 import com.example.demo.domain.Genre;
 import com.example.demo.domain.Movie;
+import com.example.demo.domain.MovieRepository;
+import com.example.demo.domain.RatingRepository;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
@@ -24,6 +27,9 @@ public class JpaRunner implements ApplicationRunner {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    @Autowired
+    MovieRepository movieRepository;
 
     @Override
     @Transactional
@@ -46,7 +52,8 @@ public class JpaRunner implements ApplicationRunner {
         //session.save(movie);
 
         //쿼리 생성
-        entityManager.createNamedQuery("all movie", Movie.class);
+        entityManager.createNativeQuery("Select * from movie", Movie.class);
+        //entityManager.createNamedQuery("all movie", Movie.class);
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Movie> query = builder.createQuery(Movie.class);
         Root<Movie> root = query.from(Movie.class);
@@ -54,6 +61,9 @@ public class JpaRunner implements ApplicationRunner {
 
         List<Movie> movies = entityManager.createQuery(query).getResultList();
         movies.forEach(System.out::println);
+
+
+
         /*특정 movie에 대한 rating 구하기
         1. rating table에서 특정 movidID에 대한 rating 값을 읽어옴
 
@@ -62,9 +72,14 @@ public class JpaRunner implements ApplicationRunner {
         2. 해당 userID와 특정 movieID에 해당하는 rating 값을 합함*/
 
         // 특정 젠더 특정 id 특정 occupation
+
         String rating_sql = "select SUM(score) from rating where rating.movie_id = ;\n";
         //String user_group_sql = "select "
 
-
+        Movie movie2 = new Movie();
+        movie2.setTitle("present");
+        movie2.getGenres().add(genre);
+        movie2.setUsername("souyoon");
+        movieRepository.save(movie2);
     }
 }

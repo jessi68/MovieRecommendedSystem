@@ -25,7 +25,7 @@ public class User {
     int age;
 
     @Column
-    Occupation occupation;
+    String occupation;
 
     @Column
     int zip_code;

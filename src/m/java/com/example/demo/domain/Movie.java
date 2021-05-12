@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
 @Table(name="movie")
 @Data
@@ -13,7 +14,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column
     int movieId;
