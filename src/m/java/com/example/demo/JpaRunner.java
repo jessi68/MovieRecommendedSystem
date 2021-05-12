@@ -34,7 +34,7 @@ public class JpaRunner implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        Movie movie = new Movie();
+        /*Movie movie = new Movie();
         movie.setUsername("souyookkn1");
         movie.setTitle("titanic");
         entityManager.persist(movie);
@@ -45,14 +45,14 @@ public class JpaRunner implements ApplicationRunner {
         movie.getGenres().add(genre);
         Session session = entityManager.unwrap(Session.class);
         session.save(movie);
-        session.save(genre);
+        session.save(genre);*/
 
 
         //Session session = entityManager.unwrap(Session.class);
         //session.save(movie);
 
         //쿼리 생성
-        entityManager.createNativeQuery("Select * from movie", Movie.class);
+        /*entityManager.createNativeQuery("Select * from movie", Movie.class);
         //entityManager.createNamedQuery("all movie", Movie.class);
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Movie> query = builder.createQuery(Movie.class);
@@ -61,7 +61,7 @@ public class JpaRunner implements ApplicationRunner {
 
         List<Movie> movies = entityManager.createQuery(query).getResultList();
         movies.forEach(System.out::println);
-
+         */
 
 
         /*특정 movie에 대한 rating 구하기
@@ -76,10 +76,10 @@ public class JpaRunner implements ApplicationRunner {
         String rating_sql = "select SUM(score) from rating where rating.movie_id = ;\n";
         //String user_group_sql = "select "
 
-        Movie movie2 = new Movie();
+        /*Movie movie2 = new Movie();
         movie2.setTitle("present");
         movie2.getGenres().add(genre);
         movie2.setUsername("souyoon");
-        movieRepository.save(movie2);
+        movieRepository.save(movie2);*/
     }
 }

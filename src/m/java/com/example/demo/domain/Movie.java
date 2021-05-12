@@ -19,13 +19,13 @@ public class Movie {
     @Column
     int movieId;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, columnDefinition = "varchar(255) default 'seoyoon'")
     private String username;
 
     @Column(nullable = false, unique = true)
     private String title;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "movie_id")
     private Set<Genre> genres = new HashSet<>();
 

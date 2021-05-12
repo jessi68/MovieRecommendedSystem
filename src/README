@@ -15,3 +15,7 @@ logging.level.org.hibernate.type.descriptor.sql=trace
 
 docker start postgres_boot && docker exec -i -t postgres_boot bash
 psql --username souyoon --dbname springdata
+
+
+기능 요구사항
+1. movie
