@@ -34,6 +34,7 @@ public class MovieRepositoryTest {
         //Then
         assertThat(newMovie.getId()).isNotNull();
 
+        /*
         //When
         List<Movie> movies = movieRepository.findAll();
         //Then
@@ -48,7 +49,7 @@ public class MovieRepositoryTest {
         assertThat(page.getNumber()).isEqualTo(0);
         assertThat(page.getSize()).isEqualTo(10);
         assertThat(page.getNumberOfElements()).isEqualTo(1);
-
+        */
         // When
         /*page = movieRepository.findByTitleContains("spring", PageRequest.of(1, 10));
         //Then

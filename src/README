@@ -18,4 +18,6 @@ psql --username souyoon --dbname springdata
 
 
 기능 요구사항
-1. movie
+1.[o] 파일로부터 movie data 불러와서 'movie' table 에 저장하는 기능
+2.[x] 파일로부터 장르데이터 불러와서  'genre' table 에 저장하는 기능
+3.[x] 2를 한 이후,
