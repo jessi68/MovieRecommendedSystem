@@ -35,7 +35,7 @@ public class MovieLoader implements ApplicationRunner {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         Session session = entityManager.unwrap(Session.class);
         String[] elements;
-        String[] genres;
+        String [] genres;
         String line = "";
 
         while(true) {
@@ -43,12 +43,21 @@ public class MovieLoader implements ApplicationRunner {
             if(line == null){
                 break;
             }
-            elements = line.split("::");
-            Movie movie = new Movie();
-            movie.setTitle(elements[1]);
 
-            entityManager.persist(movie);
-            session.save(movie);
+            elements = line.split("::");
+            Genre genre = new Genre();
+            genres = elements[2].split("|");
+
+            for(String name: genres) {
+                genre.setName(name);
+            }
+            session.save(genre);
+            //elements = line.split("::");
+            //Movie movie = new Movie();/
+            // movie.setTitle(elements[1]);
+
+            //entityManager.persist(movie);
+            //session.save(movie);
         }
 
     }

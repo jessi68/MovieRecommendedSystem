@@ -1,25 +1,15 @@
 package com.example.demo;
 
 
-import com.example.demo.domain.Genre;
-import com.example.demo.domain.Movie;
-import com.example.demo.domain.MovieRepository;
-import com.example.demo.domain.RatingRepository;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @Transactional
@@ -29,7 +19,7 @@ public class JpaRunner implements ApplicationRunner {
     EntityManager entityManager;
 
     @Autowired
-    MovieRepository movieRepository;
+    //MovieRepository movieRepository;
 
     @Override
     @Transactional

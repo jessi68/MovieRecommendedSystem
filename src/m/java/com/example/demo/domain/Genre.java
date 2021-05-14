@@ -13,7 +13,7 @@ public class Genre {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    String genre;
+    String name;
 
    @ManyToOne
    @JoinColumn(name = "movie_id")
