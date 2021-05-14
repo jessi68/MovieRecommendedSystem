@@ -46,7 +46,7 @@ public class MovieLoader implements ApplicationRunner {
 
             elements = line.split("::");
             Genre genre = new Genre();
-            genres = elements[2].split("|");
+            genres = elements[2].split("\\|");
 
             for(String name: genres) {
                 genre.setName(name);
