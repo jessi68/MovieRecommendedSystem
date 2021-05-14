@@ -25,6 +25,8 @@ public class Movie {
     @Column(nullable = false, unique = true)
     private String title;
 
+    private Integer likeCount;
+
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "movie_id")
     private Set<Genre> genres = new HashSet<>();
