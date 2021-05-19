@@ -37,11 +37,12 @@ public class MovieRepositoryTest {
         assertThat(newMovie.getId()).isNotNull();
         assertThat(newMovie.getId()).isNotNull();*/
 
-            Optional<Movie> byId = movieRepository.findById(100l);
+            Optional<Movie> byId = movieRepository.findById(100);
             assertThat(byId).isEmpty();
             Movie movie2 = byId.orElse(new Movie());
             //movieRepository.save(null);
-            Movie movie1 = byId.orElseThrow(IllegalAccessException::new);
+            //
+        // Movie movie1 = byId.orElseThrow(IllegalAccessException::new);
 
 
             Movie movie3 = new Movie();
@@ -50,11 +51,10 @@ public class MovieRepositoryTest {
             movieRepository.save(movie3);
 
             PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "LikeCount"));
-            ListenableFuture<List<Movie>> movies = movieRepository.findByTitleContainsIgnoreCase("Disney", pageRequest);
+            List<Movie> movies = movieRepository.findByTitleContainsIgnoreCase("Disney", pageRequest);
 
-            List<Movie> m = movies.get();
 
-            m.forEach(System.out::println);
+            movies.forEach(System.out::println);
             // assertThat(movies.size()).isEqualTo(1);
 
             // assertThat 이 return 하는 객체는 hasFieldOrPropertyWithvalue(property, value) 라는 멤버함수 가짐

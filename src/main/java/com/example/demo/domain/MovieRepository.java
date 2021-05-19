@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import java.util.List;
 import java.util.concurrent.Future;
 
-public interface MovieRepository extends JpaRepository<Movie, Long> {
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
     //Page<Movie> findByTitleContains(String title, Pageable pageable);
 
     //long countByTitleContains(String title);
@@ -20,12 +20,12 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     // nativeQuery: sql, nativequery 를 true 로 설정안해주면 jql써야함
     // (2) 먼저 시도하고 정의해둔 쿼리없으면 (1) 시도 (default).
     //@Query(value = "SELECT c FROM movie as m", nativeQuery = true)
-    @Async
+
     // 이 메소드 실행을 별도의 스레드에게 실행
     // nonblocking code 로 만들려면
-    ListenableFuture<List<Movie>> findByTitleContainsIgnoreCase(String title, Pageable pageable);
+    List<Movie> findByTitleContainsIgnoreCase(String title, Pageable pageable);
 
-    Page<Movie> findByLikeCountGreaterThanAndPost(String title);
+    //Page<Movie> findByLikeCountGreaterThan(String title);
 
 
 }

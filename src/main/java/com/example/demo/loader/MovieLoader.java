@@ -22,11 +22,12 @@ import java.util.List;
 @Transactional
 public class MovieLoader implements ApplicationRunner {
 
-    private static final String MOVIE_PATH = "C:\\Users\\GTHR\\Downloads\\spring-in-action-master\\spring-in-action-master\\chapter03\\MovieSystem\\src\\m\\" +
+    private static final String MOVIE_PATH = "C:\\Users\\GTHR\\Downloads\\spring-in-action-master\\spring-in-action-master\\chapter03\\MovieSystem\\src\\main\\" +
             "resources\\static\\movies_data";
 
     @PersistenceContext
     EntityManager entityManager;
+
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -44,20 +45,24 @@ public class MovieLoader implements ApplicationRunner {
                 break;
             }
 
+
+            // code with me
+            //
+
             elements = line.split("::");
-            Genre genre = new Genre();
+            Movie movie = new Movie();
+            movie.setTitle(elements[1]);
+            movie.setUsername("souyoon");
+
             genres = elements[2].split("\\|");
 
             for(String name: genres) {
-                genre.setName(name);
+                Genre g = new Genre();
+                g.setName(name);
+                session.save(g);
+                movie.getGenres().add(g);
             }
-            session.save(genre);
-            //elements = line.split("::");
-            //Movie movie = new Movie();/
-            // movie.setTitle(elements[1]);
-
-            //entityManager.persist(movie);
-            //session.save(movie);
+            session.save(movie);
         }
 
     }

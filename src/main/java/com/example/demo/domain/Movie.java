@@ -19,12 +19,13 @@ public class Movie {
     @Column
     int movieId;
 
-    @Column(unique = true, columnDefinition = "varchar(255) default 'seoyoon'")
+    @Column(columnDefinition = "varchar(255) default 'seoyoon'")
     private String username;
 
     @Column(nullable = false, unique = true)
     private String title;
 
+    @Column(columnDefinition = "integer default 1")
     private Integer likeCount;
 
     @OneToMany(cascade = {CascadeType.ALL})
@@ -34,5 +35,7 @@ public class Movie {
     @Column
     @OneToMany
     Set<Rating> ratings = new HashSet<>();
+
+
 
 }
