@@ -22,11 +22,8 @@ public class User {
     @Column
     String gender;
 
-    @Column(name = "min_age", columnDefinition = "integer default 0")
-    Integer minAge;
-
-    @Column(name = "max_age", columnDefinition = "integer default 145")
-    Integer maxAge;
+    @Column
+    Age age;
 
     @ManyToOne
     @JoinColumn(name = "occupation_id")
