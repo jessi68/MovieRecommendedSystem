@@ -18,12 +18,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 @Component
-@Order(3)
+@Order(4)
 @Transactional
 public class UserLoader extends Loader implements ApplicationRunner {
 
     @Autowired
     private OccupationRepository occupationRepository;
+
+    @Autowired
+    private AgeRepository ageRepository;
 
     private static final int USER_INDEX = 0;
     private static final int GENDER_INDEX = 1;
@@ -39,7 +42,7 @@ public class UserLoader extends Loader implements ApplicationRunner {
                 User user = new User();
                 user.setUserId(Integer.parseInt(datas[USER_INDEX]));
                 user.setGender(datas[GENDER_INDEX]);
-                //user.setAge(Integer.parseInt(datas[AGE_INDEX]));
+                user.setAge(ageRepository.findByRepresentative(Integer.parseInt(datas[AGE_INDEX])));
                 user.setOccupation(occupationRepository.findByCode(Integer.parseInt(datas[OCCUPATION_INDEX])));
                 user.setZipCode(datas[ZIP_CODE_INDEX]);
                 session.save(user);
