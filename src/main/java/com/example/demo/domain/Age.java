@@ -2,22 +2,24 @@ package com.example.demo.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name="age")
 public class Age {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
+
     @Column
-    private int representative;
+    private Integer representative;
 
-    @Column(columnDefinition = "integer default 0")
-    private int minAge;
+    @Column(columnDefinition = "Integer default 0")
+    private Integer minAge;
 
-    @Column(columnDefinition = "integer default 145")
-    private int maxAge;
+    @Column(columnDefinition = "Integer default 145")
+    private Integer maxAge;
 
 }
