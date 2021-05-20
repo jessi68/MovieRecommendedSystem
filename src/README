@@ -1,7 +1,6 @@
 --database 설정하는데 필요한 command
 
-docker start container_name
-docker exec -i -t container_name bash
+docker start postgres_boot && docker exec -i -t postgres_boot bash
 su - postgres
 (if "psql: error: FATAL role "postgres" does not exist"
 occurs, then type "psql --username souyoon --dbname springdata")
@@ -13,11 +12,19 @@ logging.level.org.hibernate.type.descriptor.sql=trace
 를 application.properties 에 추가하면 된다.
 
 
-s
 psql --username souyoon --dbname springdata
 
 
 기능 요구사항
-1.[o] 파일로부터 movie data 불러와서 'movie' table 에 저장하는 기능
-2.[o] 파일로부터 장르데이터 불러와서  'genre' table 에 저장하는 기능
-3.[x] 2를 한 이후,
+
+## 파일 로드해서 데이터베이스에 저장
+    1.[o] movie data 불러와서 'movie' table 에 저장하는 기능
+    2.[o] 장르데이터 불러와서  'genre' table 에 저장하는 기능
+    3.[o] occupation 데이터 불러와 occupation table 에 저장
+    4.[o] User 데이터 불러와서 member table 에 저장
+    5.[x] rating 데이터 불러와서 정보 저장
+
+1.[o] 2를 한 이후,.rating table에서 특정 movidID에 대한 rating 값을 읽어옴
+2.[x] 특정 user 와 비슷한 정보를 가진 user 에 의해 써진 영화들 정보 불러오기.
+
+
