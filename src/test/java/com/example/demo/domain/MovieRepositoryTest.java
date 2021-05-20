@@ -51,10 +51,10 @@ public class MovieRepositoryTest {
             movieRepository.save(movie3);
 
             PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "LikeCount"));
-            List<Movie> movies = movieRepository.findByTitleContainsIgnoreCase("Disney", pageRequest);
+            //List<Movie> movies = movieRepository.findByTitleContainsIgnoreCase("Disney", pageRequest);
 
 
-            movies.forEach(System.out::println);
+            //movies.forEach(System.out::println);
             // assertThat(movies.size()).isEqualTo(1);
 
             // assertThat 이 return 하는 객체는 hasFieldOrPropertyWithvalue(property, value) 라는 멤버함수 가짐
