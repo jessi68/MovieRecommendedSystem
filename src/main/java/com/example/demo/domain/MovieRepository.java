@@ -23,9 +23,10 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     // 이 메소드 실행을 별도의 스레드에게 실행
     // nonblocking code 로 만들려면
-    List<Movie> findByTitleContainsIgnoreCase(String title, Pageable pageable);
 
+    //Movie findById(Integer id);
     //Page<Movie> findByLikeCountGreaterThan(String title);
 
+    Movie findByMovieId(Integer movie_id);
 
 }

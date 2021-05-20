@@ -14,7 +14,7 @@ public class Rating {
     private Long id;
 
     @Column
-    int score;
+    Integer score;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
@@ -23,4 +23,9 @@ public class Rating {
     @ManyToOne
     @JoinColumn(name="user_id")
     User user;
+
+    @Column
+    String timeStamp;
+
+
 }

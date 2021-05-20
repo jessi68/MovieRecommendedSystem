@@ -4,6 +4,7 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -11,11 +12,15 @@ import javax.persistence.*;
 public class Occupation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    Integer id;
 
     @Column
-    String occupation;
+    String job;
 
     @Column
-    String code;
+    Integer code;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "occupation_id")
+    List<User> users;
 }

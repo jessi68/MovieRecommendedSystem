@@ -35,5 +35,5 @@ public class RatingRepository {
                             .collect(Collectors.summingInt(Integer::intValue));
         return totalScore;
     }
-    //public List<>
+
 }

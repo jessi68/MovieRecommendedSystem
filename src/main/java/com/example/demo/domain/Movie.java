@@ -16,13 +16,10 @@ public class Movie {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Column
-    int movieId;
+    @Column(name ="movie_id")
+    Integer movieId;
 
-    @Column(columnDefinition = "varchar(255) default 'seoyoon'")
-    private String username;
-
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String title;
 
     @Column(columnDefinition = "integer default 1")
@@ -32,10 +29,8 @@ public class Movie {
     @JoinColumn(name = "movie_id")
     private Set<Genre> genres = new HashSet<>();
 
-    @Column
     @OneToMany
+    @Column(name = "movie_id")
     Set<Rating> ratings = new HashSet<>();
-
-
 
 }
